@@ -8,8 +8,12 @@ namespace Core.Methods
 {
     public class Example : IMethod
     {
+        public Logger Log { get; set; }
+
         public Vector Run(Matrix matrix, Vector vector)
         {
+            // знак оклику - перевірка на нул
+            Log?.NewMsg("Hello nigga");
             var vec =  new Vector(5);
             vec[0] = 2;
             vec[1] = 3;

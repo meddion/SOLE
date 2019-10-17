@@ -9,6 +9,7 @@ namespace Core.Methods
     using Core;
     public interface IMethod
     {
+        Logger Log { get; set; }
         Vector Run(Matrix matrix, Vector vector);
     }
 }
