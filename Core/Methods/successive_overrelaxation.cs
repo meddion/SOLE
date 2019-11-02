@@ -22,7 +22,7 @@ namespace Core.Methods
         {
             // знак оклику - перевірка на нул
             Log?.NewMsg("Tu dumav bude resultat? naebaav.");
-            Vector res = sor_solver(ref matrix, ref vector);
+            Vector resultat = sor_solver(ref matrix, ref vector);
             Log?.NewMsg("Lul, ne naebav))");
             return x;
         }
