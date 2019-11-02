@@ -14,6 +14,7 @@ namespace Core.Methods
         {
             // знак оклику - перевірка на нул
             Log?.NewMsg("Hello nigga");
+            Log?.NewMsg("Hello Vasya");
             var vec =  new Vector(5);
             vec[0] = 2;
             vec[1] = 3;
