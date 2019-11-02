@@ -22,7 +22,7 @@ namespace Core.Methods
         {
             // знак оклику - перевірка на нул
             Log?.NewMsg("Tu dumav bude resultat? naebaav.");
-            Vector resultat = sor_solver(ref matrix, ref vector);
+            sor_solver(ref matrix, ref vector);
             Log?.NewMsg("Lul, ne naebav))");
             return x;
         }
@@ -46,7 +46,7 @@ namespace Core.Methods
             }
         }
         //solver
-        public Vector sor_solver(ref Matrix a, ref Vector b)
+        public void sor_solver(ref Matrix a, ref Vector b)
         {
             //init
             int cnt = 0,i;
@@ -92,8 +92,7 @@ namespace Core.Methods
            // Console.ForegroundColor = ConsoleColor.White;
             show(x);
             //daaa vertae vector a ne pokazatel' na tru pizdu
-            return x;
-        }
+            }
         //nedoconstructor
         public successive_overrelaxation(int dimension,double eps)
         {
