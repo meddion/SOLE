@@ -23,7 +23,7 @@ namespace UnitTests
             var vec = ex.Run(null, null);
             Assert.IsTrue(etalon == vec);
         }
-
+     
         private void Log_Write(string msg)
         {
             File.WriteAllText("D:/log.txt", msg);
