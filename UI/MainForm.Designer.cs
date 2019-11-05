@@ -55,6 +55,7 @@
             this.methodSelector.Name = "methodSelector";
             this.methodSelector.Size = new System.Drawing.Size(296, 24);
             this.methodSelector.TabIndex = 0;
+            this.methodSelector.SelectedIndexChanged += new System.EventHandler(this.methodSelector_SelectedIndexChanged);
             // 
             // logBox
             // 
