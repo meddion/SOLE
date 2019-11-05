@@ -7,7 +7,7 @@ using System.Text;
 // na input a array nyjno imenno double tip 1.0 ne 1
 namespace Core.Methods
 {
-    public class successive_overrelaxation:IMethod
+    public class successive_overrelaxation : IMethod
     {
 
         private const double omega = 1.09; // ochen' nujna xyina, shob ne byt' dedom (0->2) (0 to 1 SUR, 1 - Gauss Seidel, 1 to 2 - SOR)
@@ -58,7 +58,7 @@ namespace Core.Methods
             }
             while (error > eps)
             {
-                Console.WriteLine("{0}=============", ++cnt); //debug
+                //Console.WriteLine("{0}=============", ++cnt); //debug
                 //update old values
                 for (i = 0; i < dimension; i++)
                 {

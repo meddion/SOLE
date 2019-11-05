@@ -40,12 +40,25 @@ namespace Core
                     throw new ArgumentOutOfRangeException();
                 }
                 data[row, column] = value;
+                CellChanged?.Invoke(row, column, value);
             }
         }
-        public static Matrix GetRandomMatrix()
+        public static Matrix GetRandomMatrix(int size, ChangeCellEventHandler changeCellEventHandler = null)
         {
-            throw new NotImplementedException();
+            var r = new Random();
+            var res = new Matrix(size);
+            for(int i = 0; i < size; i++)
+            {
+                for(int j = 0; j < size; j++)
+                {
+                    var value = r.NextDouble() * 1000;
+                    res[i, j] = value;
+                    changeCellEventHandler?.Invoke(i, j, value);
+                }
+            }
+            return res;
         }
-        
+        public delegate void ChangeCellEventHandler(int row, int column, double value);
+        public event ChangeCellEventHandler CellChanged;
     }
 }
