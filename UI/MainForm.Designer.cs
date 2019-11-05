@@ -54,9 +54,10 @@
             "Верхні релаксації",
             "LU",
             "Халецький"});
-            this.methodSelector.Location = new System.Drawing.Point(82, 6);
+            this.methodSelector.Location = new System.Drawing.Point(62, 5);
+            this.methodSelector.Margin = new System.Windows.Forms.Padding(2);
             this.methodSelector.Name = "methodSelector";
-            this.methodSelector.Size = new System.Drawing.Size(274, 32);
+            this.methodSelector.Size = new System.Drawing.Size(206, 27);
             this.methodSelector.TabIndex = 0;
             this.methodSelector.SelectedIndexChanged += new System.EventHandler(this.methodSelector_SelectedIndexChanged);
             // 
@@ -65,9 +66,10 @@
             this.logBox.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.logBox.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.logBox.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.logBox.Location = new System.Drawing.Point(12, 432);
+            this.logBox.Location = new System.Drawing.Point(9, 351);
+            this.logBox.Margin = new System.Windows.Forms.Padding(2);
             this.logBox.Name = "logBox";
-            this.logBox.Size = new System.Drawing.Size(752, 85);
+            this.logBox.Size = new System.Drawing.Size(565, 70);
             this.logBox.TabIndex = 1;
             this.logBox.Text = "";
             // 
@@ -75,30 +77,35 @@
             // 
             this.matrixGrid.AllowUserToAddRows = false;
             this.matrixGrid.AllowUserToDeleteRows = false;
+            this.matrixGrid.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.matrixGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.matrixGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.matrixGrid.ColumnHeadersVisible = false;
-            this.matrixGrid.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.matrixGrid.Location = new System.Drawing.Point(13, 44);
+            this.matrixGrid.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.matrixGrid.Location = new System.Drawing.Point(10, 36);
+            this.matrixGrid.Margin = new System.Windows.Forms.Padding(2);
             this.matrixGrid.Name = "matrixGrid";
             this.matrixGrid.RowHeadersVisible = false;
             this.matrixGrid.RowHeadersWidth = 51;
             this.matrixGrid.RowTemplate.Height = 24;
-            this.matrixGrid.Size = new System.Drawing.Size(450, 382);
+            this.matrixGrid.Size = new System.Drawing.Size(338, 310);
             this.matrixGrid.TabIndex = 2;
             // 
             // vectorBGrid
             // 
             this.vectorBGrid.AllowUserToAddRows = false;
             this.vectorBGrid.AllowUserToDeleteRows = false;
+            this.vectorBGrid.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.vectorBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.vectorBGrid.ColumnHeadersVisible = false;
             this.vectorBGrid.GridColor = System.Drawing.SystemColors.Control;
-            this.vectorBGrid.Location = new System.Drawing.Point(469, 44);
+            this.vectorBGrid.Location = new System.Drawing.Point(352, 36);
+            this.vectorBGrid.Margin = new System.Windows.Forms.Padding(2);
             this.vectorBGrid.Name = "vectorBGrid";
             this.vectorBGrid.RowHeadersVisible = false;
             this.vectorBGrid.RowHeadersWidth = 51;
             this.vectorBGrid.RowTemplate.Height = 24;
-            this.vectorBGrid.Size = new System.Drawing.Size(148, 382);
+            this.vectorBGrid.Size = new System.Drawing.Size(111, 310);
             this.vectorBGrid.TabIndex = 3;
             // 
             // resultGrid
@@ -107,16 +114,18 @@
             this.resultGrid.AllowUserToDeleteRows = false;
             this.resultGrid.AllowUserToResizeColumns = false;
             this.resultGrid.AllowUserToResizeRows = false;
+            this.resultGrid.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.resultGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.resultGrid.ColumnHeadersVisible = false;
             this.resultGrid.GridColor = System.Drawing.SystemColors.Control;
-            this.resultGrid.Location = new System.Drawing.Point(623, 44);
+            this.resultGrid.Location = new System.Drawing.Point(467, 36);
+            this.resultGrid.Margin = new System.Windows.Forms.Padding(2);
             this.resultGrid.Name = "resultGrid";
             this.resultGrid.ReadOnly = true;
             this.resultGrid.RowHeadersVisible = false;
             this.resultGrid.RowHeadersWidth = 51;
             this.resultGrid.RowTemplate.Height = 24;
-            this.resultGrid.Size = new System.Drawing.Size(141, 382);
+            this.resultGrid.Size = new System.Drawing.Size(106, 310);
             this.resultGrid.TabIndex = 4;
             // 
             // size
@@ -124,14 +133,15 @@
             this.size.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.size.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.size.ForeColor = System.Drawing.SystemColors.Window;
-            this.size.Location = new System.Drawing.Point(429, 7);
+            this.size.Location = new System.Drawing.Point(322, 6);
+            this.size.Margin = new System.Windows.Forms.Padding(2);
             this.size.Minimum = new decimal(new int[] {
             2,
             0,
             0,
             0});
             this.size.Name = "size";
-            this.size.Size = new System.Drawing.Size(120, 31);
+            this.size.Size = new System.Drawing.Size(90, 26);
             this.size.TabIndex = 5;
             this.size.Value = new decimal(new int[] {
             2,
@@ -144,9 +154,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(8, 9);
+            this.label1.Location = new System.Drawing.Point(5, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 24);
+            this.label1.Size = new System.Drawing.Size(52, 19);
             this.label1.TabIndex = 6;
             this.label1.Text = "Метод";
             // 
@@ -154,19 +165,21 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(362, 9);
+            this.label2.Location = new System.Drawing.Point(267, 9);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 24);
+            this.label2.Size = new System.Drawing.Size(51, 19);
             this.label2.TabIndex = 7;
             this.label2.Text = "Розмір";
             // 
             // randomMatrix
             // 
             this.randomMatrix.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.randomMatrix.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.randomMatrix.Location = new System.Drawing.Point(555, 6);
+            this.randomMatrix.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.randomMatrix.Location = new System.Drawing.Point(416, 5);
+            this.randomMatrix.Margin = new System.Windows.Forms.Padding(2);
             this.randomMatrix.Name = "randomMatrix";
-            this.randomMatrix.Size = new System.Drawing.Size(209, 32);
+            this.randomMatrix.Size = new System.Drawing.Size(157, 26);
             this.randomMatrix.TabIndex = 8;
             this.randomMatrix.Text = "Випадкова матриця";
             this.randomMatrix.UseVisualStyleBackColor = true;
@@ -174,10 +187,10 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(776, 529);
+            this.ClientSize = new System.Drawing.Size(582, 430);
             this.Controls.Add(this.randomMatrix);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -190,6 +203,7 @@
             this.Cursor = System.Windows.Forms.Cursors.PanSouth;
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "Dont touch my tralala";
             ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).EndInit();

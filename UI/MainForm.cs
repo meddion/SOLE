@@ -20,6 +20,9 @@ namespace UI
         public MainForm()
         {
             InitializeComponent();
+            matrixGrid.ForeColor = Color.Black;
+            resultGrid.ForeColor = Color.Black;
+            vectorBGrid.ForeColor = Color.Black;
             matrixGrid.RowCount = 2;
             matrixGrid.ColumnCount = 2;
             vectorBGrid.ColumnCount = 1;
