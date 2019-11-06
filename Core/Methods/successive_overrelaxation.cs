@@ -8,14 +8,13 @@ namespace Core.Methods
 {
     public class successive_overrelaxation : IMethod
     {
-        private const double eps = 1e-16;  // to4nist'
-        private const double omega = 1.09; // ochen' nujna xyina, shob ne byt' dedom (0->2) (0 to 1 SUR, 1 - Gauss Seidel, 1 to 2 - SOR)
-                                          // moje zapuliu optimal pidbor do omega potom
-        private double gs;               // gauss - seidel part (chisto dlya debaga v klassi)
-        private int dimension;          // rozmirnist
-        private Vector x;              // actual x     
-        private Vector old_x;         // old x
+        private const double eps = 1e-16;
+        private const double omega = 1.09;                              
+        private double gs;              
+        private int dimension;       
+        private Vector x, old_x;    
         
+
         public Logger Log { get; set; } 
         public Vector Run(Matrix matrix, Vector vector)
         {
@@ -25,6 +24,8 @@ namespace Core.Methods
             Log?.NewMsg("Lul, ne naebav))");
             return x;
         }
+
+
         public void sor_solver(Matrix a, Vector b)
         {
             dimension = a.Size;
@@ -71,6 +72,8 @@ namespace Core.Methods
             }
             return max;
         }      
+
+
         public successive_overrelaxation()
         {
             this.dimension = 0;
