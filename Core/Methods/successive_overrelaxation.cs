@@ -8,9 +8,9 @@ namespace Core.Methods
 {
     public class successive_overrelaxation : IMethod
     {
-        private const double eps = 0.0001;  // to4nist'
+        private const double eps = 1e-16;  // to4nist'
         private const double omega = 1.09; // ochen' nujna xyina, shob ne byt' dedom (0->2) (0 to 1 SUR, 1 - Gauss Seidel, 1 to 2 - SOR)
-                                          //moje zapuliu optimal pidbor do omega potom
+                                          // moje zapuliu optimal pidbor do omega potom
         private double gs;               // gauss - seidel part (chisto dlya debaga v klassi)
         private int dimension;          // rozmirnist
         private Vector x;              // actual x     
@@ -29,7 +29,10 @@ namespace Core.Methods
         {
             //init
             dimension = a.Size;
-            int cnt = 0,i;
+            x = new Vector(dimension);
+            old_x = new Vector(dimension);
+            int i;
+            //int cnt = 0;
             double error = 1000;
             //work
             for (i = 0; i < dimension; i++)
@@ -38,7 +41,7 @@ namespace Core.Methods
             }
             while (error > eps)
             {
-                //Console.WriteLine("{0}=============", ++cnt); //debug
+               // Console.WriteLine("{0}=============", ++cnt); //debug
                 //update old values
                 for (i = 0; i < dimension; i++)
                 {
@@ -53,24 +56,23 @@ namespace Core.Methods
                         
                         if (k != i)
                         {
-                            double check = x[k];
                             sigma = sigma + a[i, k] * x[k];
                         }
                     }
                     gs = ((b[i]) - sigma)/a[i,i];
                     x[i] = (omega * gs)+((1 - omega) * (old_x[i])) ;
-                   // Console.WriteLine("{0} -> {1}", i + 1, x[i]); //debug
+                //    Console.WriteLine("{0} -> {1}", i + 1, x[i]); //debug
                 }
                 
                 //errors
                 error = find_max(x, old_x);
-             //   Console.WriteLine("Error:\n{0}",error);//debug
+              //  Console.WriteLine("Error:\n{0}",error);//debug
             }
             // naxyu ubrat'
            // Console.ForegroundColor = ConsoleColor.Green;
            // Console.WriteLine("\n======   DONE!!!   ======\n");
            // Console.ForegroundColor = ConsoleColor.White;
-            show(x);
+           // show(x);
             //daaa vertae vector a ne pokazatel' na tru pizdu
             }         // main solver
         private double find_max(Vector a, Vector b)
@@ -84,7 +86,7 @@ namespace Core.Methods
         }       // max_error
         private void show(Vector arr)
         {
-            Log?.NewMsg("Reuslt:\n");
+            Log?.NewMsg("Result:\n");
             for (int i = 0; i < dimension; i++)
             {
                 Log?.NewMsg(Convert.ToString(arr[i])+"\n");
@@ -94,8 +96,6 @@ namespace Core.Methods
         public successive_overrelaxation()
         {
             this.dimension = 0;
-            this.x = new Vector(dimension);
-            this.old_x = new Vector(dimension);
             this.gs = 0;
         }             // nedokonstructor
     }

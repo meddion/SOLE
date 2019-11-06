@@ -35,6 +35,22 @@ namespace Core
                 data[index] = value;
             }
         }
+
+        public static Vector operator*(Matrix a, Vector b)
+        {
+            int dimension = b.Size;
+            Vector c = new Vector(dimension);
+            for (int i = 0; i < dimension; i++)
+            {
+                for (int j = 0; j < dimension; j++)
+                {
+                    c[i] = c[i] + a[i, j] * b[j];
+                }
+            }
+
+            return c;
+        }
+
         public static bool operator==(Vector vec1, Vector vec2)
         {
             if (vec1.Size != vec2.Size)
