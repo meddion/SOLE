@@ -8,7 +8,7 @@ namespace Core.Methods
 {
     public class successive_overrelaxation : IMethod
     {
-        private const double eps = 1e-14;
+        private const double eps = 1e-16;
         private const double omega = 1.09;                              
         private double gs;              
         private int dimension;       
@@ -32,7 +32,7 @@ namespace Core.Methods
             x = new Vector(dimension);
             old_x = new Vector(dimension);
             int i;
-           // int cnt = 0;
+            //int cnt = 0;
             double error = 1000;
             for (i = 0; i < dimension; i++)
             {
@@ -47,21 +47,17 @@ namespace Core.Methods
                 }
                 for (i = 0; i < dimension; i++)
                 {
-                    double l_sigma = 0;
-                    double r_sigma = 0;
-                    for (int k = 0; k < dimension; k++)
-                    {
-                        if (k < i) l_sigma = l_sigma + a[i, k] * x[k];
-                        if (k > i) r_sigma = r_sigma + a[i, k] * old_x[k];
-                    }
+                    double sigma = 0;
+                    for (int k = 0; k < dimension; k++) 
+                        if (k != i) sigma = sigma + a[i, k] * x[k];
 
-                    gs = ((b[i]) - l_sigma - r_sigma) / a[i, i];
+                    gs = ((b[i]) - sigma)/a[i,i];
                     x[i] = (omega * gs)+((1 - omega) * (old_x[i])) ;
-                   // Console.WriteLine("{0} -> {1}", i + 1, x[i]); //debug
+                //    Console.WriteLine("{0} -> {1}", i + 1, x[i]); //debug
                 }
                 
                 error = find_max(x, old_x);
-               // Console.WriteLine("Error:\n{0}",error);//debug
+              //  Console.WriteLine("Error:\n{0}",error);//debug
             }
            // Console.ForegroundColor = ConsoleColor.Green;
            // Console.WriteLine("\n======   DONE!!!   ======\n");
