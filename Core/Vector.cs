@@ -38,6 +38,8 @@ namespace Core
 
         public static Vector operator*(Matrix a, Vector b)
         {
+            if (a.Size != b.Size)
+                throw new ArgumentException("Matrix and vector must be the same size");
             int dimension = b.Size;
             Vector c = new Vector(dimension);
             for (int i = 0; i < dimension; i++)

@@ -20,6 +20,7 @@ namespace UnitTests
             etalon[0] = 2;
             etalon[1] = 3;
             etalon[4] = 7;
+            var v = new Matrix(5) * etalon;
             var vec = ex.Run(null, null);
             Assert.IsTrue(etalon == vec);
         }

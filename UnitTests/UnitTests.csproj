@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExampleMethodTest.cs" />
+    <Compile Include="MethodTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SuccessiveOverrelaxationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
