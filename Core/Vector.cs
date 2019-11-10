@@ -59,7 +59,9 @@ namespace Core
                 return false;
             for(int i = 0; i < vec1.Size; i++)
             {
-                if (vec1[i] != vec2[i])
+                if (double.IsNaN(vec1[i]) || double.IsNaN(vec2[i]))
+                    return false;
+                if (Math.Abs(vec1[i] - vec2[i]) > Settings.Eps)
                     return false;
             }
             return true;

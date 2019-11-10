@@ -17,5 +17,11 @@ namespace UnitTests
             var so = new successive_overrelaxation();
             Assert.IsTrue(MethodTest.RandomMatrixTest(so));
         }
+        [Test]
+        public void KnowedMatrixTest()
+        {
+            var so = new successive_overrelaxation();
+            Assert.IsTrue(MethodTest.KnowedMatrixTest(so));
+        }
     }
 }
