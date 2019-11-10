@@ -51,7 +51,7 @@ namespace Core
             {
                 for(int j = 0; j < size; j++)
                 {
-                    var value = r.NextDouble() * 1000;
+                    var value = r.Next(Int32.MinValue, Int32.MaxValue) % 1000;
                     res[i, j] = value;
                     changeCellEventHandler?.Invoke(i, j, value);
                 }

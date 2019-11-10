@@ -9,7 +9,7 @@ namespace Core.Methods
     public class successive_overrelaxation : IMethod
     {
         private const double eps = 1e-14;
-        private const double omega = 1.09;                              
+        private const double omega = 1.01;                              
         private double gs;              
         private int dimension;       
         private Vector x, old_x;    

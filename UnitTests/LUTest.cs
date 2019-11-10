@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 namespace UnitTests
 {
     [TestFixture]
-    public class SuccessiveOverrelaxationTest
+    class LUTest
     {
         [Test]
         public void RandomMatrixTest()
         {
-            var so = new successive_overrelaxation();
-            Assert.IsTrue(MethodTest.RandomMatrixTest(so));
+            var lu = new LUmet();
+            Assert.IsTrue(MethodTest.RandomMatrixTest(lu));
         }
         [Test]
         public void KnowedMatrixTest()
         {
-            var so = new successive_overrelaxation();
-            Assert.IsTrue(MethodTest.KnowedMatrixTest(so));
+            var lu = new LUmet();
+            Assert.IsTrue(MethodTest.KnowedMatrixTest(lu));
         }
     }
 }
