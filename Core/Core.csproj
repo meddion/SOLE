@@ -45,6 +45,7 @@
     <Compile Include="Matrix.cs" />
     <Compile Include="Methods\Example.cs" />
     <Compile Include="Methods\IMethod.cs" />
+    <Compile Include="Methods\LUmet.cs" />
     <Compile Include="Methods\successive_overrelaxation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
