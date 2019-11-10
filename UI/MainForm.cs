@@ -24,8 +24,8 @@ namespace UI
             matrixGrid.ColumnCount = 2;
             vectorBGrid.ColumnCount = 1;
             vectorBGrid.RowCount = 2;
-            resultGrid.RowCount = 2;
             resultGrid.ColumnCount = 1;
+            resultGrid.RowCount = 2;
             matrixA = new Matrix(2);
             matrixA.CellChanged += MatrixA_CellChanged;
             log = new Logger();
