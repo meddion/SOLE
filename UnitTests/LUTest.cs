@@ -12,16 +12,22 @@ namespace UnitTests
     class LUTest
     {
         [Test]
-        public void RandomMatrixTest()
+        public void RandomMatrixTestSize3()
         {
             var lu = new LUmet();
-            Assert.IsTrue(MethodTest.RandomMatrixTest(lu));
+            Assert.IsTrue(MethodTest.RandomMatrixTestSize3(lu));
         }
         [Test]
-        public void KnowedMatrixTest()
+        public void KnowedMatrixTestSize3()
         {
             var lu = new LUmet();
-            Assert.IsTrue(MethodTest.KnowedMatrixTest(lu));
+            Assert.IsTrue(MethodTest.KnowedMatrixTestSize3(lu));
+        }
+        [Test]
+        public void RandomMatrixTestSize10()
+        {
+            var lu = new LUmet();
+            Assert.IsTrue(MethodTest.RandomMatrixTestSize10(lu));
         }
     }
 }

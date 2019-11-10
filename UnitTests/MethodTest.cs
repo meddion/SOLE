@@ -10,7 +10,7 @@ namespace UnitTests
 {
     public static class MethodTest
     {
-        public static bool RandomMatrixTest(IMethod method)
+        public static bool RandomMatrixTestSize3(IMethod method)
         {
             var matrix = Matrix.GetRandomMatrix(3);
             var X = new Vector(3);
@@ -21,7 +21,7 @@ namespace UnitTests
             var Xnew = method.Run(matrix, B);
             return X == Xnew;
         }
-        public static bool KnowedMatrixTest(IMethod method)
+        public static bool KnowedMatrixTestSize3(IMethod method)
         {
             var a = new Matrix(3);
             a[0, 0] = 5;
@@ -34,15 +34,33 @@ namespace UnitTests
             a[2, 1] = 5;
             a[2, 2] = 7;
             var b = new Vector(3);
-            b[0] = 3;
-            b[1] = 7;
-            b[2] = 2;
+            b[0] = 10;
+            b[1] = 6;
+            b[2] = 20;
             var x = new Vector(3);
-            x[0] = -1;
-            x[1] = 2;
-            x[2] = 0;
+            x[0] = 1;
+            x[1] = 1;
+            x[2] = 1;
             var Xnew = method.Run(a, b);
             return Xnew == x;
+        }
+        public static bool RandomMatrixTestSize10(IMethod method)
+        {
+            var matrix = Matrix.GetRandomMatrix(10);
+            var X = new Vector(10);
+            X[0] = -100;
+            X[1] = 0;
+            X[2] = 0;
+            X[3] = 0;
+            X[4] = 0;
+            X[5] = 6;
+            X[6] = 4;
+            X[7] = 5;
+            X[8] = 2;
+            X[9] = 1;
+            var B = matrix * X;
+            var Xnew = method.Run(matrix, B);
+            return X == Xnew;
         }
     }
 }
