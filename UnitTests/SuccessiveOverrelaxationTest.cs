@@ -12,16 +12,16 @@ namespace UnitTests
     public class SuccessiveOverrelaxationTest
     {
         [Test]
-        public void RandomMatrixTest()
+        public void RandomMatrixTestSize3()
         {
             var so = new successive_overrelaxation();
-            Assert.IsTrue(MethodTest.RandomMatrixTest(so));
+            Assert.IsTrue(MethodTest.RandomMatrixTestSize3(so));
         }
         [Test]
-        public void KnowedMatrixTest()
+        public void KnowedMatrixTestSize3()
         {
             var so = new successive_overrelaxation();
-            Assert.IsTrue(MethodTest.KnowedMatrixTest(so));
+            Assert.IsTrue(MethodTest.KnowedMatrixTestSize3(so));
         }
     }
 }

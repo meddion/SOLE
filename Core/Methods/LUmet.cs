@@ -8,7 +8,7 @@ namespace Core.Methods
     {
         public Matrix mL { get; private set; }
         public Matrix mU { get; private set; }
-        private Vector vX;
+        public Vector vX { get; private set; }
         public Logger Log { get; set; }
 
         public Vector Run(Matrix matrix, Vector vector)
@@ -19,71 +19,91 @@ namespace Core.Methods
             return vX;
         }
 
-        public void lu_solver(Matrix a, Vector b)
+        void lu_solver(Matrix a, Vector b)
         {
+            //Initialization part.
+
+            //variables
             int SIZE = a.Size;
+            double temp = 0.0;
+            int i = 0,
+                    j = 0,
+                    k = 0;
+            //matrix's:
             mL = new Matrix(SIZE);
             mU = new Matrix(SIZE);
+
+            //vector's:
+            Vector vZ = new Vector(SIZE);
             vX = new Vector(SIZE);
 
-            // Copy matrix a => mU matrix.
-            for (int i = 0; i < SIZE; i++)
-            {
-                for (int j = 0; j < SIZE; j++)
-                    mU[i, j] = a[i, j];
-            }
             //~//
 
-            // Fill value in L and U matrix.
-            for (int i = 0; i < SIZE; i++)
+            //Initialization elements L and U matrix.
+            for (i = 0; i < SIZE; i++)
             {
-                for (int j = i; j < SIZE; j++)
-                    mL[j, i] = mU[j, i] / mU[i, i];
-            }
-
-            for (int k = 1; k < SIZE; k++)
-            {
-                for (int i = k - 1; i < SIZE; i++)
+                for (j = 0; j < SIZE; j++)
                 {
-                    for (int j = i; j < SIZE; j++)
-                        mL[j, i] = mU[j, i] / mU[i, i];
-                }
-
-                for (int i = k; i < SIZE; i++)
-                {
-                    for (int j = k - 1; j < SIZE; j++)
-                        mU[i, j] = mU[i, j] - mL[i, k - 1] * mU[k - 1, j];
+                    mL[i, j] = 0.0;
+                    mU[i, j] = 0.0;
+                    if (i == j)
+                    {
+                        mU[i, j] = 1.0;
+                    }
                 }
             }
             //~//
 
-            //mL*vZ = vB;
-            //mU*vX = vZ;
-            var vZ = new Vector(SIZE);
-            double temp;
+            //Search elements L and U matrix.
+            for (k = 0; k <= SIZE - 1; k++)
+            {
+                for (i = k; i <= SIZE - 1; i++)
+                {
+                    temp = 0.0;
+                    for (j = 0; j <= k - 1; j++)
+                    {
+                        temp += mL[i, j] * mU[j, k];
+                    }
+                    mL[i, k] = a[i, k] - temp;
+                }
 
-            vZ[1] = b[0] / mL[0, 0];
-            for (int k = 1; k < SIZE; k++)
+                for (i = k + 1; i <= SIZE - 1; i++)
+                {
+                    temp = 0.0;
+                    for (j = 0; j <= k - 1; j++)
+                    {
+                        temp += mL[k, j] * mU[j, i];
+                    }
+                    mU[k, i] = (a[k, i] - temp) / mL[k, k];
+                }
+            }
+            //~//
+
+            //Search vectors Z and X.
+            //Z
+            vZ[0] = b[0] / mL[0, 0];
+            for (k = 1; k < SIZE; k++)
             {
                 temp = 0.0;
-                for (int j = 0; j <= k - 1; j++)
+                for (j = 0; j <= k; j++)
                 {
                     temp += mL[k, j] * vZ[j];
                 }
                 vZ[k] = (b[k] - temp) / mL[k, k];
             }
-
+            //X
             vX[SIZE - 1] = vZ[SIZE - 1];
-
-            for (int k = SIZE - 2; k >= 0; k--)
+            for (k = SIZE - 2; k >= 0; k--)
             {
                 temp = 0.0;
-                for (int j = k + 1; j < SIZE; j++)
+                for (j = k + 1; j < SIZE; j++)
                 {
                     temp += mU[k, j] * vX[j];
                 }
                 vX[k] = vZ[k] - temp;
             }
+            //~//
+
         }
     }
 }
