@@ -46,6 +46,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GaussSeidelTest.cs" />
     <Compile Include="LUTest.cs" />
     <Compile Include="MethodTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
