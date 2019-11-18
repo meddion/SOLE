@@ -8,14 +8,12 @@ namespace Core.Methods
     {
         public Matrix mL { get; private set; }
         public Matrix mU { get; private set; }
-        public Vector vX { get; private set; }
+        Vector vX { get; set; }
         public Logger Log { get; set; }
 
         public Vector Run(Matrix matrix, Vector vector)
         {
-            Log?.NewMsg("Tu dumav bude resultat? naebaav.");
             lu_solver(matrix, vector);
-            Log?.NewMsg("Lul, ne naebav))");
             return vX;
         }
 
