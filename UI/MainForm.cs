@@ -20,6 +20,7 @@ namespace UI
         public MainForm()
         {
             InitializeComponent();
+            methodSelector.SelectedIndex = 0;
             matrixGrid.RowCount = 2;
             matrixGrid.ColumnCount = 2;
             vectorBGrid.ColumnCount = 1;

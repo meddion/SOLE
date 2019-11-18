@@ -45,6 +45,7 @@
             this.matrixGrid = new System.Windows.Forms.DataGridView();
             this.vectorBGrid = new System.Windows.Forms.DataGridView();
             this.resultGrid = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.size)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vectorBGrid)).BeginInit();
@@ -54,22 +55,23 @@
             // methodSelector
             // 
             this.methodSelector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.methodSelector.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.methodSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.methodSelector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.methodSelector.Font = new System.Drawing.Font("Gadugi", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.methodSelector.ForeColor = System.Drawing.SystemColors.Window;
-            this.methodSelector.FormattingEnabled = true;
             this.methodSelector.ItemHeight = 20;
             this.methodSelector.Items.AddRange(new object[] {
-            "Гаус-Зейдель",
-            "Верхні релаксації",
             "LU",
+            "Верхні релаксації",
+            "Гаус-Зейдель",
             "Халецький"});
-            this.methodSelector.Location = new System.Drawing.Point(107, 18);
+            this.methodSelector.Location = new System.Drawing.Point(101, 7);
             this.methodSelector.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.methodSelector.Name = "methodSelector";
-            this.methodSelector.Size = new System.Drawing.Size(316, 28);
+            this.methodSelector.Size = new System.Drawing.Size(164, 28);
+            this.methodSelector.Sorted = true;
             this.methodSelector.TabIndex = 0;
-            this.methodSelector.Text = "Виберіть метод";
             this.methodSelector.SelectedIndexChanged += new System.EventHandler(this.methodSelector_SelectedIndexChanged);
             // 
             // logBox
@@ -77,10 +79,10 @@
             this.logBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.logBox.Font = new System.Drawing.Font("Consolas", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.logBox.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.logBox.Location = new System.Drawing.Point(19, 497);
+            this.logBox.Location = new System.Drawing.Point(19, 460);
             this.logBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logBox.Name = "logBox";
-            this.logBox.Size = new System.Drawing.Size(809, 73);
+            this.logBox.Size = new System.Drawing.Size(811, 73);
             this.logBox.TabIndex = 1;
             this.logBox.Text = "";
             // 
@@ -90,7 +92,7 @@
             this.size.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.size.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.size.ForeColor = System.Drawing.SystemColors.Window;
-            this.size.Location = new System.Drawing.Point(560, 16);
+            this.size.Location = new System.Drawing.Point(355, 5);
             this.size.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.size.Minimum = new decimal(new int[] {
             2,
@@ -98,8 +100,9 @@
             0,
             0});
             this.size.Name = "size";
-            this.size.Size = new System.Drawing.Size(66, 32);
+            this.size.Size = new System.Drawing.Size(68, 32);
             this.size.TabIndex = 5;
+            this.size.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.size.Value = new decimal(new int[] {
             2,
             0,
@@ -110,31 +113,32 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Courier New", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(19, 19);
+            this.label1.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(25, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 27);
+            this.label1.Size = new System.Drawing.Size(70, 23);
             this.label1.TabIndex = 6;
             this.label1.Text = "Метод";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Courier New", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(453, 19);
+            this.label2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(267, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 27);
+            this.label2.Size = new System.Drawing.Size(82, 23);
             this.label2.TabIndex = 7;
             this.label2.Text = "Розмір";
             // 
             // randomMatrix
             // 
+            this.randomMatrix.Cursor = System.Windows.Forms.Cursors.Hand;
             this.randomMatrix.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.randomMatrix.Font = new System.Drawing.Font("Courier New", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.randomMatrix.Location = new System.Drawing.Point(664, 17);
+            this.randomMatrix.Location = new System.Drawing.Point(477, 7);
             this.randomMatrix.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.randomMatrix.Name = "randomMatrix";
-            this.randomMatrix.Size = new System.Drawing.Size(164, 34);
+            this.randomMatrix.Size = new System.Drawing.Size(131, 32);
             this.randomMatrix.TabIndex = 8;
             this.randomMatrix.Text = "Random";
             this.randomMatrix.UseVisualStyleBackColor = true;
@@ -169,7 +173,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.matrixGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.matrixGrid.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.matrixGrid.Location = new System.Drawing.Point(19, 71);
+            this.matrixGrid.Location = new System.Drawing.Point(19, 44);
             this.matrixGrid.Margin = new System.Windows.Forms.Padding(10);
             this.matrixGrid.Name = "matrixGrid";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -197,6 +201,7 @@
             this.vectorBGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.vectorBGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.vectorBGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.vectorBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.vectorBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.vectorBGrid.ColumnHeadersVisible = false;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -208,8 +213,8 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.vectorBGrid.DefaultCellStyle = dataGridViewCellStyle4;
             this.vectorBGrid.GridColor = System.Drawing.SystemColors.Control;
-            this.vectorBGrid.Location = new System.Drawing.Point(458, 71);
-            this.vectorBGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.vectorBGrid.Location = new System.Drawing.Point(460, 44);
+            this.vectorBGrid.Margin = new System.Windows.Forms.Padding(10);
             this.vectorBGrid.Name = "vectorBGrid";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -246,7 +251,7 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.resultGrid.DefaultCellStyle = dataGridViewCellStyle6;
             this.resultGrid.GridColor = System.Drawing.SystemColors.Control;
-            this.resultGrid.Location = new System.Drawing.Point(664, 71);
+            this.resultGrid.Location = new System.Drawing.Point(666, 44);
             this.resultGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resultGrid.Name = "resultGrid";
             this.resultGrid.ReadOnly = true;
@@ -264,12 +269,25 @@
             this.resultGrid.Size = new System.Drawing.Size(164, 404);
             this.resultGrid.TabIndex = 4;
             // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(684, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(131, 32);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Рахувати";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.ClientSize = new System.Drawing.Size(845, 581);
+            this.ClientSize = new System.Drawing.Size(851, 543);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.resultGrid);
             this.Controls.Add(this.vectorBGrid);
             this.Controls.Add(this.randomMatrix);
@@ -308,6 +326,7 @@
         private System.Windows.Forms.DataGridView matrixGrid;
         private System.Windows.Forms.DataGridView vectorBGrid;
         private System.Windows.Forms.DataGridView resultGrid;
+        private System.Windows.Forms.Button button1;
     }
 }
 
