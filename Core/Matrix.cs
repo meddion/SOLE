@@ -58,6 +58,19 @@ namespace Core
             }
             return res;
         }
+        public static Matrix FromArray(double[,] array)
+        {
+            var size = array.Length;
+            var res = new Matrix(size);
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    res[i, j] = array[i,j];
+                }
+            }
+            return res;
+        }
         public delegate void ChangeCellEventHandler(int row, int column, double value);
         public event ChangeCellEventHandler CellChanged;
     }
