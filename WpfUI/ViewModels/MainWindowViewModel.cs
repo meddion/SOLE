@@ -5,10 +5,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Collections.ObjectModel;
 
 namespace WpfUI.ViewModels
 {
@@ -19,8 +15,12 @@ namespace WpfUI.ViewModels
             run = new RelayCommand(x => {
                 A = new double[2,2];
             });
+            random = new RelayCommand(x =>
+            {
+                A = Matrix.GetRandomMatrix(Size).ToArray();
+            });
         }
-        int size;
+        int size = 2;
         public int Size
         {
             get { return size; }
@@ -65,6 +65,19 @@ namespace WpfUI.ViewModels
                 run = value;
                 OnPropertyChanged(nameof(Run));
             } 
+        }
+        RelayCommand random;
+        public RelayCommand Random
+        {
+            get
+            {
+                return random;
+            }
+            set
+            {
+                random = value;
+                OnPropertyChanged(nameof(Random));
+            }
         }
     }
 }

@@ -71,6 +71,10 @@ namespace Core
             }
             return res;
         }
+        public double[,] ToArray()
+        {
+            return data;
+        }
         public delegate void ChangeCellEventHandler(int row, int column, double value);
         public event ChangeCellEventHandler CellChanged;
     }
