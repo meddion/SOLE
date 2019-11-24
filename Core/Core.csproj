@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Logger.cs" />
     <Compile Include="Matrix.cs" />
+    <Compile Include="Methods\Cholesky.cs" />
     <Compile Include="Methods\gauss _seidel.cs" />
     <Compile Include="Methods\IMethod.cs" />
     <Compile Include="Methods\LUmet.cs" />
