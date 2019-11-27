@@ -88,7 +88,7 @@ namespace Core.Methods
                 double sum = 0;
                 for(int j=0;j<size;j++)
                 {
-                    sum += mat_result[i, j] * b[j];
+                    sum += mat_result[i, j] * b[i];
                 }
                 Vec_X[i] = sum;
             }

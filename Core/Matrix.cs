@@ -60,13 +60,13 @@ namespace Core
         }
         public static Matrix FromArray(double[,] array)
         {
-            var size = array.Length;
+            var size = array.GetLength(0);
             var res = new Matrix(size);
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
                 {
-                    res[i, j] = array[i,j];
+                    res[j, i] = array[i,j];
                 }
             }
             return res;

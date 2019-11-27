@@ -28,7 +28,7 @@ namespace Core
             }
             set
             {
-                if (index < 0 && index >= Size)
+                if (index < 0 && index > Size)
                 {
                     throw new ArgumentOutOfRangeException();
                 }
@@ -71,6 +71,25 @@ namespace Core
             return !(vec1 == vec2);
         }
 
+        public static Vector FromArray(double [,] array)
+        {
+            int size = array.GetLength(1);
+            var res = new Vector(size);
+            for(int i = 0; i < size; i++)
+            {
+                res[i] = array[0, i];
+            }
+            return res;
+        }
+        public double[,] ToArray()
+        {
+            var array = new double[1, Size];
+            for(int i = 0; i < Size; i++)
+            {
+                array[0, i] = data[i];
+            }
+            return array;
+        }
         public IEnumerator GetEnumerator()
         {
             return data.GetEnumerator();

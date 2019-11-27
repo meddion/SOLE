@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.Methods;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,10 +11,33 @@ namespace WpfUI.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        Logger logger;
         public MainWindowViewModel()
         {
+            logger = new Logger();
             run = new RelayCommand(x => {
-                A = new double[2,2];
+                IMethod method = null;
+                var a = Matrix.FromArray(A);
+                var b = Vector.FromArray(B);
+                switch(methodIndex)
+                {
+                    case 0:
+                        method = new Cholesky();
+                        break;
+                    case 1:
+                        method = new gauss_seidel();
+                        break;
+                    case 2:
+                        method = new successive_overrelaxation();
+                        break;
+                    case 3:
+                        method = new LUmet();
+                        break;
+                    default:
+                        logger.NewMsg("Такого методу немає");
+                        break;
+                }
+                X = method?.Run(a, b).ToArray();
             });
             random = new RelayCommand(x =>
             {
@@ -29,6 +53,7 @@ namespace WpfUI.ViewModels
                 size = value;
                 A = new double[value, value];
                 B = new double[1, value];
+                X = new double[1, value];
                 OnPropertyChanged(nameof(Size));
             }
         }
@@ -44,7 +69,7 @@ namespace WpfUI.ViewModels
             } 
         }
         double[,] b = new double[1, 2];
-        public double[,]  B
+        public double[,] B
         {
             get
             {
@@ -54,6 +79,19 @@ namespace WpfUI.ViewModels
             {
                 b = value;
                 OnPropertyChanged(nameof(B));
+            }
+        }
+        double[,] x = new double[1, 2];
+        public double [,] X
+        {
+            get
+            {
+                return x;
+            }
+            set
+            {
+                x = value;
+                OnPropertyChanged(nameof(X));
             }
         }
         RelayCommand run;
@@ -77,6 +115,32 @@ namespace WpfUI.ViewModels
             {
                 random = value;
                 OnPropertyChanged(nameof(Random));
+            }
+        }
+        string log;
+        public string Log
+        {
+            get
+            {
+                return log;
+            }
+            set
+            {
+                log = value;
+                OnPropertyChanged(nameof(Log));
+            }
+        }
+        int methodIndex = 0;
+        public int MethodIndex
+        {
+            get
+            {
+                return methodIndex;
+            }
+            set
+            {
+                methodIndex = value;
+                OnPropertyChanged(nameof(MethodIndex));
             }
         }
     }
