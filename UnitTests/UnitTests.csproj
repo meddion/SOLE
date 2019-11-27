@@ -46,6 +46,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CholeskyTest.cs" />
     <Compile Include="GaussSeidelTest.cs" />
     <Compile Include="LUTest.cs" />
     <Compile Include="MethodTest.cs" />

@@ -75,6 +75,36 @@ namespace Core
         {
             return data;
         }
+        public Matrix Transpose()
+        {
+            var size = Size;
+            var trans = new Matrix(size);
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    trans[i, j] = this[j, i];
+                }
+            }
+            return trans;
+        }
+        public static Matrix operator* (Matrix a, Matrix b)
+        {
+            var size = a.Size;
+            var c = new Matrix(size);
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    c[i, j] = 0;
+                    for (int k = 0; k < size; k++)
+                    {
+                        c[i, j] += a[i, k] * b[k, j];
+                    }
+                }
+            }
+            return c;
+        }
         public delegate void ChangeCellEventHandler(int row, int column, double value);
         public event ChangeCellEventHandler CellChanged;
     }
