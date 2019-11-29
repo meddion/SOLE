@@ -22,9 +22,9 @@ namespace Core.Methods
 
         public void sor_solver(Matrix a, Vector b)
         {
-            int i,iter=0;
+            int i, iter = 0;
             dimension = a.Size;
-            int maxIter = Settings.max * dimension * 2;
+            int maxIter = Settings.max * dimension * 2 + 1;
             x = new Vector(dimension);
             old_x = new Vector(dimension);
             double error = Settings.Eps + 0.1;
