@@ -7,58 +7,31 @@ using System.Text;
 namespace Core.Methods
 {
     public class successive_overrelaxation : IMethod
-    {
-        private const double eps = 1e-14;
-        private const double omega = 1.091;                              
+    {                              
         private double gs;              
         private int dimension;       
         private Vector x, old_x;    
-        
-
+   
         public Logger Log { get; set; } 
+
         public Vector Run(Matrix matrix, Vector vector)
         {
             sor_solver(matrix, vector);
             return x;
         }
-        private bool isDiagDominant(int n,Matrix a)
-        {
-            int i, j;
-            Vector tmp = new Vector(n);
-            for (i = 0; i < n; i++)
-            {
-                double sum = 0;
-                for (j = 0; j < n; j++)
-                {
-                    sum += Math.Abs(a[i, j]);
-                }
-                sum -= Math.Abs(a[i, i]);
-                if (Math.Abs(a[i, i]) < sum)
-                    return false;
-            }
-            return true;
-        }
+
         public void sor_solver(Matrix a, Vector b)
         {
-            int i, maxiter = 150,cnt=0;
+            int i,iter=0;
             dimension = a.Size;
+            int maxIter = Settings.max * dimension * 2;
             x = new Vector(dimension);
             old_x = new Vector(dimension);
-            if (isDiagDominant(dimension, a))
-            {
-                Log?.NewMsg("Domianant");
-                x[0] = -1;
-                x[1] = 2;
-                x[2] = 0;
-            }
-            else
-            {
-                double error = eps + 0.000000001;
+            double error = Settings.Eps + 0.1;
                 for (i = 0; i < dimension; i++)
                     x[i] = 0;
-                while (error > eps )
+            while (error > Settings.Eps && iter < maxIter) 
                 {
-                    //  Console.WriteLine("{0}=============", ++cnt); //debug
                     for (i = 0; i < dimension; i++)
                     {
                         old_x[i] = x[i];
@@ -72,26 +45,17 @@ namespace Core.Methods
                         }
 
                         gs = (b[i] - sigma)/a[i,i];
-                        x[i] = ((1.0 - omega) * old_x[i]) + (omega * gs);
-                        // Console.WriteLine("{0} -> {1}", i + 1, x[i]); //debug
+                        x[i] = ((1.0 - Settings.omega) * old_x[i]) + (Settings.omega * gs);
                     }
 
-                    error = find_max(x, old_x);
-                    // Console.WriteLine("Error:\n{0}",error);//debug
-                    if (Double.IsNaN(x[0]))
-                    {
-                        Log?.NewMsg("NAN");
-                        x[0] = 0;
-                        x[1] = 0;
-                        x[2] = 0;
-                    }
-                }
+                    error = maxVecError(x, old_x);
+                ++iter;
             }
-           // Console.ForegroundColor = ConsoleColor.Green;
-           // Console.WriteLine("\n======   DONE!!!   ======\n");
-           // Console.ForegroundColor = ConsoleColor.White;
+            if (iter >= maxIter) Log?.NewMsg("Max amount of iterations reached!\n");
+            else Log?.NewMsg("Result was found after " + iter.ToString() + " iterations");
             } 
-        private double find_max(Vector a, Vector b)
+
+        private double maxVecError(Vector a, Vector b)
         {
             double max = 0;
             for (int i = 0; i < dimension; i++)
@@ -100,7 +64,6 @@ namespace Core.Methods
             }
             return max;
         }      
-
 
         public successive_overrelaxation()
         {
