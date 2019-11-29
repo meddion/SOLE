@@ -8,12 +8,12 @@ namespace Core
 {
     public class Logger
     {
-        internal void NewException(Exception e)
+        public void NewException(Exception e)
         {
             Write?.Invoke("Виключна ситуація " + e.Message);
             WriteException?.Invoke(e.ToString());
         }
-        internal void NewMsg(string msg)
+        public void NewMsg(string msg)
         {
             Write?.Invoke(msg);
         }
