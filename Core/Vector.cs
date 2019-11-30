@@ -20,7 +20,7 @@ namespace Core
         {
             get
             {
-                if(index<0 && index>=Size)
+                if(index<0 || index>Size)
                 {
                     throw new ArgumentOutOfRangeException();
                 }
@@ -28,7 +28,7 @@ namespace Core
             }
             set
             {
-                if (index < 0 && index > Size)
+                if (index < 0 || index > Size)
                 {
                     throw new ArgumentOutOfRangeException();
                 }

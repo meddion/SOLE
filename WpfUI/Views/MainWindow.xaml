@@ -25,13 +25,11 @@
             </Grid.ColumnDefinitions>
             <DataGrid HeadersVisibility="None" grid2d:ItemsSource.Array2DTransposed="{Binding A}" RowHeight="NaN" ColumnWidth="*" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
             <DataGrid HeadersVisibility="None" grid2d:ItemsSource.Array2DTransposed="{Binding B}" RowHeight="NaN" ColumnWidth="*" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
-            <DataGrid HeadersVisibility="None" grid2d:ItemsSource.Array2DTransposed="{Binding X}" RowHeight="NaN" ColumnWidth="*" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
-            <Button Command="{Binding Random}" Grid.Row="0" Grid.Column="2" Content="Random" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
-            
-            <Button Command="{Binding Run}" Content="Run" Grid.Column="1" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
-            
+            <DataGrid HeadersVisibility="None" grid2d:ItemsSource.Array2DTransposed="{Binding X}" IsReadOnly="True" RowHeight="NaN" ColumnWidth="*" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
+            <Button Command="{Binding Random}" Grid.Row="0" Grid.Column="2" Content="Рандом" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
+            <Button Command="{Binding Run}" Content="Старт" Grid.Column="1" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
             <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-                <Label Content="Method" HorizontalAlignment="Left" Margin="6" VerticalAlignment="Center" Width="54"/>
+                <Label Content="Метод" HorizontalAlignment="Left" Margin="6" VerticalAlignment="Center" Width="54"/>
                 <ComboBox SelectedIndex="{Binding MethodIndex}" HorizontalAlignment="Left"  Margin="6" VerticalAlignment="Center" Width="400">
                     <ComboBoxItem Content="Холецький"/>
                     <ComboBoxItem Content="Гаус - Зейдель"/>
@@ -43,6 +41,6 @@
         <Grid Grid.Row="1">
             <Slider AutoToolTipPlacement="BottomRight" AutoToolTipPrecision="2" IsSnapToTickEnabled="True" Ticks="2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12, 13, 14, 15, 16, 17, 18, 19, 20" TickFrequency="1" TickPlacement="BottomRight" Minimum="2" Maximum="20" Value="{Binding Size}" Margin="10" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
         </Grid>
-        <TextBlock Grid.Row="2" Text="{Binding Log}" Margin="10"/>
+        <TextBox VerticalScrollBarVisibility="Auto" IsReadOnly="True" Grid.Row="2" Text="{Binding Log}" Margin="10"/>
     </Grid>
 </Window>

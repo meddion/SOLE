@@ -21,6 +21,26 @@ namespace UnitTests
             var Xnew = method.Run(matrix, B);
             return X == Xnew;
         }
+        public static bool KnowedMatrixTestSize3(Cholesky method)
+        {
+            var a = new Matrix(3);
+            a[0, 0] = 25;
+            a[0, 1] = 15;
+            a[0, 2] = -5;
+            a[1, 0] = 15;
+            a[1, 1] = 18;
+            a[1, 2] = 0;
+            a[2, 0] = -5;
+            a[2, 1] = 0;
+            a[2, 2] = 11;
+            var x = new Vector(3);
+            x[0] = 1;
+            x[1] = 1;
+            x[2] = 1;
+            var b = a * x;
+            var Xnew = method.Run(a, b);
+            return Xnew == x;
+        }
         public static bool KnowedMatrixTestSize3(IMethod method)
         {
             var a = new Matrix(3);

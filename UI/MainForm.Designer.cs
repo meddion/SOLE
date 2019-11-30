@@ -304,7 +304,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "XIO GOD";
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.size)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).EndInit();

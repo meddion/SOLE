@@ -47,9 +47,10 @@ namespace Core.Methods
             if (isDiagDominant(dimension, a))
             {
                 Log?.NewMsg("Domianant");
+                /*
                 x[0] = -1;
                 x[1] = 2;
-                x[2] = 0;
+                x[2] = 0;*/
             }
             else
             {
@@ -78,13 +79,12 @@ namespace Core.Methods
 
                     error = find_max(x, old_x);
                     // Console.WriteLine("Error:\n{0}",error);//debug
-                    if (Double.IsNaN(x[0]))
+                    /*if (Double.IsNaN(x[0]))
                     {
-                        Log?.NewMsg("NAN");
-                        x[0] = 0;
-                        x[1] = 0;
-                        x[2] = 0;
-                    }
+                        x[0] = double.NaN;
+                        x[1] = double.NaN;
+                        x[2] = double.NaN;
+                    }*/
                 }
             }
            // Console.ForegroundColor = ConsoleColor.Green;

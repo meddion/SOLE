@@ -15,6 +15,7 @@ namespace WpfUI.ViewModels
         public MainWindowViewModel()
         {
             logger = new Logger();
+            logger.Write += Logger_Write;
             run = new RelayCommand(x => {
                 IMethod method = null;
                 var a = Matrix.FromArray(A);
@@ -37,13 +38,23 @@ namespace WpfUI.ViewModels
                         logger.NewMsg("Такого методу немає");
                         break;
                 }
-                X = method?.Run(a, b).ToArray();
+                if (method != null)
+                {
+                    method.Log = logger;
+                    X = method.Run(a, b).ToArray();
+                }
             });
             random = new RelayCommand(x =>
             {
                 A = Matrix.GetRandomMatrix(Size).ToArray();
             });
         }
+
+        private void Logger_Write(string msg)
+        {
+            Log += msg + "\n";
+        }
+
         int size = 2;
         public int Size
         {
