@@ -6,41 +6,69 @@
         xmlns:local="clr-namespace:WpfUI"
         xmlns:grid2d="http://gu.se/DataGrid2D"
         mc:Ignorable="d"
-        Title="SOLE" Height="600" Width="800" MinHeight="450" MinWidth="800">
+        Background="#2a3549"
+        BorderThickness="0"
+        BorderBrush="#2a3549"
+        AllowsTransparency="True"
+        ResizeMode="CanResize"
+        Title="SOLE" Height="600" Width="800" MinHeight="450" MinWidth="800" WindowStyle="None" UseLayoutRounding="True">
+    <!---<Window.Template>
+        <ControlTemplate TargetType="Window"/>
+    </Window.Template> -->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/CustomSlider.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <SolidColorBrush x:Key="ButtonsColor" Color="#1a202a"></SolidColorBrush>
+            <SolidColorBrush x:Key="GridsColor" Color="#95acca"></SolidColorBrush>
+            <SolidColorBrush x:Key="TextColor" Color="#f5f8fd"></SolidColorBrush>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="23*"></RowDefinition>
             <RowDefinition Height="210*"></RowDefinition>
             <RowDefinition Height="23*"></RowDefinition>
             <RowDefinition Height="50*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                <Label Margin="10,0,0,0" VerticalAlignment="Center" Foreground="{StaticResource TextColor}" Content="SOLE"></Label>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Right"  Orientation="Horizontal" FlowDirection="RightToLeft">
+                <Button Command="{Binding AppClose}" BorderThickness="0" Background="{StaticResource ButtonsColor}" HorizontalAlignment="Right" Height="Auto" Margin="10" Width="50"></Button>
+            </StackPanel>
+        </DockPanel>
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="23*"></RowDefinition>
                 <RowDefinition Height="187*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*"></ColumnDefinition>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <DataGrid HeadersVisibility="None" grid2d:ItemsSource.Array2DTransposed="{Binding A}" RowHeight="NaN" ColumnWidth="*" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
-            <DataGrid HeadersVisibility="None" grid2d:ItemsSource.Array2DTransposed="{Binding B}" RowHeight="NaN" ColumnWidth="*" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
-            <DataGrid HeadersVisibility="None" grid2d:ItemsSource.Array2DTransposed="{Binding X}" IsReadOnly="True" RowHeight="NaN" ColumnWidth="*" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
-            <Button Command="{Binding Random}" Grid.Row="0" Grid.Column="2" Content="Рандом" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
-            <Button Command="{Binding Run}" Content="Старт" Grid.Column="1" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
+            <DataGrid BorderThickness="0" Background="{StaticResource GridsColor}" HeadersVisibility="None" grid2d:ItemsSource.Array2DTransposed="{Binding A}" RowHeight="NaN" ColumnWidth="*" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto">
+            </DataGrid>
+            <DataGrid BorderThickness="0" Background="{StaticResource GridsColor}" HeadersVisibility="None" grid2d:ItemsSource.Array2DTransposed="{Binding B}" RowHeight="NaN" ColumnWidth="*" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
+            <DataGrid BorderThickness="0" Background="{StaticResource GridsColor}" HeadersVisibility="None" grid2d:ItemsSource.Array2DTransposed="{Binding X}" IsReadOnly="True" RowHeight="NaN" ColumnWidth="*" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
+            <Button BorderThickness="0" Command="{Binding Random}" Foreground="{StaticResource TextColor}" Background="{StaticResource ButtonsColor}" Grid.Row="0" Grid.Column="2" Content="Рандом" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
+            <Button BorderThickness="0" Command="{Binding Run}" Foreground="{StaticResource TextColor}" Background="{StaticResource ButtonsColor}" Content="Старт" Grid.Column="1" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
             <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-                <Label Content="Метод" HorizontalAlignment="Left" Margin="6" VerticalAlignment="Center" Width="54"/>
-                <ComboBox SelectedIndex="{Binding MethodIndex}" HorizontalAlignment="Left"  Margin="6" VerticalAlignment="Center" Width="400">
-                    <ComboBoxItem Content="Холецький"/>
-                    <ComboBoxItem Content="Гаус - Зейдель"/>
-                    <ComboBoxItem Content="Верхні релаксації"/>
-                    <ComboBoxItem Content="LU"/>
+                <Label Foreground="{StaticResource TextColor}" Content="Метод" HorizontalAlignment="Left" Margin="6" VerticalAlignment="Center" Width="54"/>
+                <ComboBox BorderThickness="0" Background="Black" Foreground="{StaticResource ButtonsColor}" SelectedIndex="{Binding MethodIndex}" HorizontalAlignment="Left"  Margin="6" VerticalAlignment="Center" Width="400">
+                    <ComboBoxItem BorderThickness="0" Foreground="{StaticResource ButtonsColor}" Content="Холецький"/>
+                    <ComboBoxItem BorderThickness="0" Foreground="{StaticResource ButtonsColor}" Content="Гаус - Зейдель"/>
+                    <ComboBoxItem BorderThickness="0" Foreground="{StaticResource ButtonsColor}"  Content="Верхні релаксації"/>
+                    <ComboBoxItem BorderThickness="0" Foreground="{StaticResource ButtonsColor}"  Content="LU"/>
                 </ComboBox>
             </StackPanel>
         </Grid>
-        <Grid Grid.Row="1">
-            <Slider AutoToolTipPlacement="BottomRight" AutoToolTipPrecision="2" IsSnapToTickEnabled="True" Ticks="2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12, 13, 14, 15, 16, 17, 18, 19, 20" TickFrequency="1" TickPlacement="BottomRight" Minimum="2" Maximum="20" Value="{Binding Size}" Margin="10" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+        <Grid Grid.Row="2">
+            <Slider Foreground="{StaticResource ButtonsColor}" AutoToolTipPlacement="BottomRight" AutoToolTipPrecision="2" IsSnapToTickEnabled="True" Ticks="2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12, 13, 14, 15, 16, 17, 18, 19, 20" TickFrequency="1" TickPlacement="BottomRight" Minimum="2" Maximum="20" Value="{Binding Size}" Margin="10" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
         </Grid>
-        <TextBox VerticalScrollBarVisibility="Auto" IsReadOnly="True" Grid.Row="2" Text="{Binding Log}" Margin="10"/>
+        <TextBox Foreground="{StaticResource TextColor}" Background="{StaticResource ButtonsColor}" VerticalScrollBarVisibility="Auto" IsReadOnly="True" Grid.Row="3" Text="{Binding Log}" Margin="10"/>
     </Grid>
 </Window>

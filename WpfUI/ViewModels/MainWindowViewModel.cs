@@ -48,6 +48,10 @@ namespace WpfUI.ViewModels
             {
                 A = Matrix.GetRandomMatrix(Size).ToArray();
             });
+            close = new RelayCommand(x =>
+            {
+                App.Current.Shutdown();
+            });
         }
 
         private void Logger_Write(string msg)
@@ -103,6 +107,19 @@ namespace WpfUI.ViewModels
             {
                 x = value;
                 OnPropertyChanged(nameof(X));
+            }
+        }
+        RelayCommand close;
+        public RelayCommand AppClose
+        {
+            get
+            {
+                return close;
+            }
+            set
+            {
+                close = value;
+                OnPropertyChanged(nameof(AppClose));
             }
         }
         RelayCommand run;
