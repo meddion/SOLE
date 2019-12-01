@@ -42,11 +42,9 @@ namespace Core.Methods
         }
         public Vector Search_Vector_X(Matrix a , Vector b)
         {
-           
+
             int size = a.Size;
-          //  int key = size - 1;
             var Vec_x = new Vector(size);
-           // Vec_x[key] = b[key] / a[key, key];
             for (int i = size -1; i >=0 ; i--)
             {
                 double sum = 0;
@@ -63,7 +61,6 @@ namespace Core.Methods
            
             int size = a.Size;
             var Vec_y = new Vector(size);
-           // Vec_y[0] = b[0] / a[0, 0];
             for (int i =0;i<size;i++)
             {
                 double sum=0;
@@ -90,9 +87,6 @@ namespace Core.Methods
     }
 }
 
-/* a = l*l(t)
- *  l*l(t)*b = x
- *  l(t)*b= y
- *  l*y =x
- */
-
+// test = {4,12,-16},
+//        {12,37,-43},
+//        {-16,43,98}.
