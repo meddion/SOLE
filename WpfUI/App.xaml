@@ -9,6 +9,7 @@
                 <Setter.Value>
                     <WindowChrome CaptionHeight="15"
                               GlassFrameThickness="0"
+                              CornerRadius="0, 0, 0, 0"
                               NonClientFrameEdges="None"
                               ResizeBorderThickness="5"
                               UseAeroCaptionButtons="False" />
