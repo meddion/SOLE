@@ -4,5 +4,16 @@
              xmlns:local="clr-namespace:WpfUI"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
+        <Style x:Key="CustomWindowStyle" TargetType="{x:Type Window}">
+            <Setter Property="WindowChrome.WindowChrome">
+                <Setter.Value>
+                    <WindowChrome CaptionHeight="15"
+                              GlassFrameThickness="0"
+                              NonClientFrameEdges="None"
+                              ResizeBorderThickness="5"
+                              UseAeroCaptionButtons="False" />
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>
