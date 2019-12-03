@@ -40,30 +40,53 @@ namespace Core.Methods
             }
             return LowerMatrix;
         }
+        public Vector Search_Vector_X(Matrix a , Vector b)
+        {
+
+            int size = a.Size;
+            var Vec_x = new Vector(size);
+            for (int i = size -1; i >=0 ; i--)
+            {
+                double sum = 0;
+                for (int j = i+1; j <size; j++)
+                {
+                    sum += a[j,i] * Vec_x[j];
+                }
+                Vec_x[i] = (b[i] - sum) / a[i, i];
+            }
+            return Vec_x;
+        }
+        public Vector Search_Vector_Y(Matrix a, Vector b)
+        {
+           
+            int size = a.Size;
+            var Vec_y = new Vector(size);
+            for (int i =0;i<size;i++)
+            {
+                double sum=0;
+                for ( int j=0;j<i;j++)
+                {
+                    sum += a[j,i] * Vec_y[j];
+                    
+                }
+                Vec_y[i] = (b[i] - sum) / a[i, i];
+            }
+            return Vec_y;
+
+        }
         public Vector Cholesky_solver(Matrix a, Vector b)
         {
             int size = a.Size;
-            var Vec_X = new Vector(size);
             var mat_Cholesky = Cholesky_Decomposition(a);
             var mat_transpose = mat_Cholesky.Transpose();
             var mat_result = mat_Cholesky * mat_transpose;
-            for (int i =0; i<size;i++)
-            {
-                double sum = 0;
-                for(int j=0;j<size;j++)
-                {
-                    sum += mat_result[i, j]/ b[i];
-                }
-                Vec_X[i] = sum;
-            }
-            return Vec_X;
+            var vec_y = Search_Vector_Y(mat_transpose, b);
+            var vec_x = Search_Vector_X(mat_Cholesky, vec_y);
+            return vec_x;
         }
     }
 }
 
-/* a = l*l(t)
- *  l*l(t)*b = x
- *  l(t)*b= y
- *  l*y =x
- */
-
+// test = {4,12,-16},
+//        {12,37,-43},
+//        {-16,43,98}.
