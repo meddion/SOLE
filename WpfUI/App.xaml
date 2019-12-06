@@ -7,7 +7,7 @@
         <Style x:Key="CustomWindowStyle" TargetType="{x:Type Window}">
             <Setter Property="WindowChrome.WindowChrome">
                 <Setter.Value>
-                    <WindowChrome CaptionHeight="15"
+                    <WindowChrome CaptionHeight="5"
                               GlassFrameThickness="0"
                               CornerRadius="0, 0, 0, 0"
                               NonClientFrameEdges="None"

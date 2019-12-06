@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace WpfUI.ViewModels
 {
+    using Views;
     public class MainWindowViewModel : ViewModelBase
     {
         Logger logger;
@@ -16,6 +17,7 @@ namespace WpfUI.ViewModels
         {
             logger = new Logger();
             logger.Write += Logger_Write;
+            Settings.Load();
             run = new RelayCommand(x => {
                 IMethod method = null;
                 var a = Matrix.FromArray(A);
@@ -63,6 +65,11 @@ namespace WpfUI.ViewModels
             clearLog = new RelayCommand(x =>
             {
                 Log = "";
+            });
+            openSettings = new RelayCommand(x =>
+            {
+                var form = new SettingsWindow();
+                form.Show();
             });
         }
 
@@ -168,6 +175,16 @@ namespace WpfUI.ViewModels
             {
                 clearLog = value;
                 OnPropertyChanged(nameof(ClearLog));
+            }
+        }
+        RelayCommand openSettings;
+        public RelayCommand OpenSettings
+        {
+            get => openSettings;
+            set
+            {
+                openSettings = value;
+                OnPropertyChanged(nameof(OpenSettings));
             }
         }
         string log;

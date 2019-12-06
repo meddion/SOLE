@@ -24,8 +24,9 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="45"></RowDefinition>
-            <RowDefinition Height="210*"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="180*"></RowDefinition>
             <RowDefinition Height="20*"></RowDefinition>
             <RowDefinition Height="70*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -34,10 +35,14 @@
                 <Label Margin="10,0,0,0" VerticalAlignment="Center" Foreground="{StaticResource TextColor}" Content="SOLE"></Label>
             </StackPanel>
             <StackPanel DockPanel.Dock="Right"  Orientation="Horizontal" FlowDirection="RightToLeft">
-                <Button Command="{Binding AppClose}" BorderThickness="0" Background="{StaticResource ButtonsColor}" HorizontalAlignment="Right" Height="Auto" Margin="10" Width="50"></Button>
+                <Button Command="{Binding AppClose}" BorderThickness="0" Background="{StaticResource ButtonsColor}" HorizontalAlignment="Right" Height="Auto" Width="50"></Button>
             </StackPanel>
         </DockPanel>
-        <Grid Grid.Row="1">
+        <Menu BorderBrush="Black" Grid.Row="1" Background="#2a3549" Foreground="{StaticResource TextColor}">
+            <MenuItem Command="{Binding OpenSettings}" Background="{StaticResource ButtonsColor}" Margin="10, 0, 0,0" Header="Налаштування" Height="30">
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="23*"></RowDefinition>
                 <RowDefinition Height="187*"></RowDefinition>
@@ -51,8 +56,8 @@
             </DataGrid>
             <DataGrid BorderThickness="0" Background="{StaticResource GridsColor}" HeadersVisibility="None" grid2d:ItemsSource.Array2DTransposed="{Binding B}" RowHeight="NaN" ColumnWidth="*" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
             <DataGrid BorderThickness="0" Background="{StaticResource GridsColor}" HeadersVisibility="None" grid2d:ItemsSource.Array2DTransposed="{Binding X}" IsReadOnly="True" RowHeight="NaN" ColumnWidth="*" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
-            <Button BorderThickness="0" Command="{Binding Random}" Foreground="{StaticResource TextColor}" Background="{StaticResource ButtonsColor}" Grid.Row="0" Grid.Column="2" Content="Рандом" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
-            <Button BorderThickness="0" Command="{Binding Run}" Foreground="{StaticResource TextColor}" Background="{StaticResource ButtonsColor}" Content="Старт" Grid.Column="1" HorizontalAlignment="Stretch" Height="Auto" Margin="10,10" VerticalAlignment="Stretch" Width="Auto"/>
+            <Button Command="{Binding Random}" Foreground="{StaticResource TextColor}" Background="{StaticResource ButtonsColor}" Grid.Row="0" Grid.Column="2" Content="Рандом" HorizontalAlignment="Stretch" Height="Auto" Margin="10,7" VerticalAlignment="Stretch" Width="Auto"/>
+            <Button Command="{Binding Run}" Foreground="{StaticResource TextColor}" Background="{StaticResource ButtonsColor}" Content="Старт" Grid.Column="1" HorizontalAlignment="Stretch" Height="Auto" Margin="10,7" VerticalAlignment="Stretch" Width="Auto"/>
             <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
                 <Label Foreground="{StaticResource TextColor}" Content="Метод" HorizontalAlignment="Left" Margin="6" VerticalAlignment="Center" Width="54"/>
                 <ComboBox BorderThickness="0" Background="Black" Foreground="{StaticResource ButtonsColor}" SelectedIndex="{Binding MethodIndex}" HorizontalAlignment="Left"  Margin="6" VerticalAlignment="Center" Width="400">
@@ -63,10 +68,10 @@
                 </ComboBox>
             </StackPanel>
         </Grid>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="3">
             <Slider Foreground="{StaticResource ButtonsColor}" AutoToolTipPlacement="BottomRight" AutoToolTipPrecision="2" IsSnapToTickEnabled="True" Ticks="2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12, 13, 14, 15, 16, 17, 18, 19, 20" TickFrequency="1" TickPlacement="BottomRight" Minimum="2" Maximum="20" Value="{Binding Size}" Margin="10, 0, 10, 10" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
         </Grid>
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="130*"></RowDefinition>
                 <RowDefinition Height="50*"></RowDefinition>
@@ -74,5 +79,6 @@
             <TextBox Foreground="{StaticResource TextColor}" Background="{StaticResource ButtonsColor}" VerticalScrollBarVisibility="Auto" IsReadOnly="True" Grid.Row="0" Text="{Binding Log}" Margin="10,0,10,10"/>
             <Button Command="{Binding ClearLog}" Content="Очистити лог" Foreground="{StaticResource TextColor}" Background="{StaticResource ButtonsColor}" Grid.Row="1" Margin="10,0,10,10"></Button>
         </Grid>
+       
     </Grid>
 </Window>
