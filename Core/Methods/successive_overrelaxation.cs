@@ -51,8 +51,8 @@ namespace Core.Methods
                     error = maxVecError(x, old_x);
                 ++iter;
             }
-            if (iter >= maxIter) Log?.NewMsg("Max amount of iterations reached!\n");
-            else Log?.NewMsg("Result was found after " + iter.ToString() + " iterations");
+            if (iter >= maxIter) Log?.NewMsg("Досягнуто максимальну кількість ітерацій, проте результат не знайдено!\n");
+            else Log?.NewMsg("Результат знайдено після " + iter.ToString() + " ітерацій при w = "+Settings.Omega.ToString());
             } 
 
         private double maxVecError(Vector a, Vector b)
