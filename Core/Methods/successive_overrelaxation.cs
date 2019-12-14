@@ -24,7 +24,7 @@ namespace Core.Methods
         {
             int i, iter = 0;
             dimension = a.Size;
-            int maxIter = Settings.max * dimension * 2 + 1;
+            int maxIter = Settings.Max * dimension * 2 + 1;
             x = new Vector(dimension);
             old_x = new Vector(dimension);
             double error = Settings.Eps + 0.1;
@@ -45,14 +45,14 @@ namespace Core.Methods
                         }
 
                         gs = (b[i] - sigma)/a[i,i];
-                        x[i] = ((1.0 - Settings.omega) * old_x[i]) + (Settings.omega * gs);
+                        x[i] = ((1.0 - Settings.Omega) * old_x[i]) + (Settings.Omega * gs);
                     }
 
                     error = maxVecError(x, old_x);
                 ++iter;
             }
-            if (iter >= maxIter) Log?.NewMsg("Max amount of iterations reached!\n");
-            else Log?.NewMsg("Result was found after " + iter.ToString() + " iterations");
+            if (iter >= maxIter) Log?.NewMsg("Досягнуто максимальну кількість ітерацій, проте результат не знайдено!\n");
+            else Log?.NewMsg("Результат знайдено після " + iter.ToString() + " ітерацій при w = "+Settings.Omega.ToString());
             } 
 
         private double maxVecError(Vector a, Vector b)

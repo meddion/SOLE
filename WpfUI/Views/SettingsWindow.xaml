@@ -1,0 +1,25 @@
+﻿<Window x:Class="WpfUI.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfUI.Views"
+        mc:Ignorable="d"
+        Background="#2a3549"
+        Title="SettingsWindow" Height="345.536" Width="431.964" ShowInTaskbar="False" WindowStyle="None" AllowsTransparency="True">
+    <Window.Resources>
+        <SolidColorBrush x:Key="ButtonsColor" Color="#1a202a"></SolidColorBrush>
+        <SolidColorBrush x:Key="GridsColor" Color="#95acca"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextColor" Color="#f5f8fd"></SolidColorBrush>
+    </Window.Resources>
+    <StackPanel>
+        <Label Foreground="{StaticResource TextColor}" Content="Точність" Margin="20, 20, 20, 10"></Label>
+        <TextBox Text="{Binding Eps}" Background="{StaticResource ButtonsColor}" Foreground="{StaticResource TextColor}" Margin="20, 0, 20, 20"></TextBox>
+        <Label Foreground="{StaticResource TextColor}" Margin="20, 0, 20, 10" Content="Омега"></Label>
+        <TextBox Text="{Binding Omega}" Background="{StaticResource ButtonsColor}" Foreground="{StaticResource TextColor}" Margin="20, 0, 20, 20"></TextBox>
+        <Label Foreground="{StaticResource TextColor}" Margin="20, 0, 20, 10" Content="Максимальна кількість ітерацій"></Label>
+        <TextBox Text="{Binding MaxCountIter}" Background="{StaticResource ButtonsColor}" Foreground="{StaticResource TextColor}" Margin="20, 0, 20, 20"></TextBox>
+        <Button Background="{StaticResource ButtonsColor}" Foreground="{StaticResource TextColor}" Command="{Binding Save}" Content="Зберегти" Height="30" Margin="20, 0, 20, 20"></Button>
+        <Button Background="{StaticResource ButtonsColor}" Foreground="{StaticResource TextColor}" Command="{Binding Cancel}" Content="Відмінити" Height="30" Margin="20, 0, 20, 20"></Button>
+    </StackPanel>
+</Window>

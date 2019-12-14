@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace WpfUI.ViewModels
 {
+    using Views;
     public class MainWindowViewModel : ViewModelBase
     {
         Logger logger;
@@ -16,6 +17,7 @@ namespace WpfUI.ViewModels
         {
             logger = new Logger();
             logger.Write += Logger_Write;
+            Settings.Load();
             run = new RelayCommand(x => {
                 IMethod method = null;
                 var a = Matrix.FromArray(A);
@@ -47,10 +49,27 @@ namespace WpfUI.ViewModels
             random = new RelayCommand(x =>
             {
                 A = Matrix.GetRandomMatrix(Size).ToArray();
+                var randB = new double[1, Size];
+                var r = new Random();
+                for (int i = 0; i < Size; ++i)
+                {
+                    
+                    randB[0, i] = r.Next(-1000, 1000);
+                }
+                B = randB;
             });
             close = new RelayCommand(x =>
             {
                 App.Current.Shutdown();
+            });
+            clearLog = new RelayCommand(x =>
+            {
+                Log = "";
+            });
+            openSettings = new RelayCommand(x =>
+            {
+                var form = new SettingsWindow();
+                form.Show();
             });
         }
 
@@ -143,6 +162,29 @@ namespace WpfUI.ViewModels
             {
                 random = value;
                 OnPropertyChanged(nameof(Random));
+            }
+        }
+        RelayCommand clearLog;
+        public RelayCommand ClearLog
+        {
+            get
+            {
+                return clearLog;
+            }
+            set
+            {
+                clearLog = value;
+                OnPropertyChanged(nameof(ClearLog));
+            }
+        }
+        RelayCommand openSettings;
+        public RelayCommand OpenSettings
+        {
+            get => openSettings;
+            set
+            {
+                openSettings = value;
+                OnPropertyChanged(nameof(OpenSettings));
             }
         }
         string log;
