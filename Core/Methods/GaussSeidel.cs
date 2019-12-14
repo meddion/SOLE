@@ -6,7 +6,7 @@ namespace Core.Methods
     {
         public Logger Log { get; set; }
 
-        public Vector Run(Matrix  , Vector vector)
+        public Vector Run(Matrix matrix, Vector vector)
         {
             int k = 0, kMax = 1000;
             double exp;
@@ -24,11 +24,11 @@ namespace Core.Methods
                     if (double.IsNaN(x[i])) Log?.NewMsg("Divide by zero case was caught.\n");
                 }
                 if (++k == kMax) { Log?.NewMsg("Iteration limit was hit.\n"); break; }
-            } while (!converge(x, prev)/*convergeMoreAccurate(matrix, x, vector)*/);
+            } while (!Converge(x, prev)/*ConvergeMoreAccurate(matrix, x, vector)*/);
             return x;
         }
 
-        private bool converge(Vector vInit, Vector vPrev)
+        private bool Converge(Vector vInit, Vector vPrev)
         {
             for (int i = 0; i < vInit.Size; i++)
             {
@@ -37,9 +37,9 @@ namespace Core.Methods
             return true;
         }
 
-        private bool convergeMoreAccurate(Matrix a, Vector x, Vector b)
+        private bool ConvergeMoreAccurate(Matrix a, Vector x, Vector b)
         {
-            return converge(a * x, b);
+            return Converge(a * x, b);
         }
     }
 }
