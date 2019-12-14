@@ -26,7 +26,7 @@ namespace WpfUI.ViewModels
                         method = new Cholesky();
                         break;
                     case 1:
-                        method = new gauss_seidel();
+                        method = new GaussSeidel();
                         break;
                     case 2:
                         method = new successive_overrelaxation();

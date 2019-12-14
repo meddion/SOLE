@@ -43,17 +43,36 @@ namespace Core
                 CellChanged?.Invoke(row, column, value);
             }
         }
+        public void PrintContent()
+        {
+            Console.Write(Environment.NewLine + "[");
+            for (int i = 0; i < Size; i++)
+            {
+                Console.Write("{");
+                for (int j = 0; j < Size; j++)
+                {
+                    Console.Write(string.Format("{0}, ", data[i, j]));
+                }
+                Console.Write("}");
+                if (i != Size - 1) Console.Write(Environment.NewLine);
+            }
+            Console.Write("]" + Environment.NewLine);
+        }
         public static Matrix GetRandomMatrix(int size, ChangeCellEventHandler changeCellEventHandler = null)
         {
-            var r = new Random();
+            var randomizer = new Random((int)DateTime.Now.Ticks);
             var res = new Matrix(size);
-            for(int i = 0; i < size; i++)
+            int randVal;
+            for (int i = 0; i < size; i++)
             {
                 for(int j = 0; j < size; j++)
                 {
-                    var value = r.Next(Int32.MinValue, Int32.MaxValue) % 1000;
-                    res[i, j] = value;
-                    changeCellEventHandler?.Invoke(i, j, value);
+                    do
+                    {
+                        randVal = randomizer.Next(Int32.MinValue, Int32.MaxValue) % 1000;
+                    } while (randVal == 0);
+                     res[i, j] = randVal;
+                     changeCellEventHandler?.Invoke(i, j, randVal); 
                 }
             }
             return res;
@@ -75,6 +94,7 @@ namespace Core
         {
             return data;
         }
+
         public Matrix Transpose()
         {
             var size = Size;

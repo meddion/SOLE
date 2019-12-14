@@ -1,25 +1,33 @@
-﻿using Core;
+﻿using System;
+using Core;
 using Core.Methods;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UnitTests
 {
     public static class MethodTest
     {
+        private static bool VerifyResult(Vector expected, Vector got)
+        {
+            if (expected != got)
+            {
+                Console.Write("The expected value: ");
+                expected.PrintContent();
+                Console.Write("The one we got: ");
+                got.PrintContent();
+                return false;
+            }
+            return true;
+        }
         public static bool RandomMatrixTestSize3(IMethod method)
         {
             var matrix = Matrix.GetRandomMatrix(3);
-            var X = new Vector(3);
-            X[0] = -1;
-            X[1] = 2;
-            X[2] = 0;
-            var B = matrix * X;
-            var Xnew = method.Run(matrix, B);
-            return X == Xnew;
+            var x = new Vector(3);
+            x[0] = -1;
+            x[1] = 2;
+            x[2] = 0;
+            var b = matrix * x;
+            var xNew = method.Run(matrix, b);
+            return VerifyResult(x, xNew);
         }
         public static bool KnowedMatrixTestSize3(Cholesky method)
         {
@@ -39,7 +47,7 @@ namespace UnitTests
             x[2] = 1;
             var b = a * x;
             var Xnew = method.Run(a, b);
-            return Xnew == x;
+            return VerifyResult(x, Xnew);
         }
         public static bool KnowedMatrixTestSize3(IMethod method)
         {
@@ -61,26 +69,28 @@ namespace UnitTests
             x[0] = 1;
             x[1] = 1;
             x[2] = 1;
-            var Xnew = method.Run(a, b);
-            return Xnew == x;
+            var xNew = method.Run(a, b);
+            return VerifyResult(x, xNew);
         }
         public static bool RandomMatrixTestSize10(IMethod method)
         {
             var matrix = Matrix.GetRandomMatrix(10);
-            var X = new Vector(10);
-            X[0] = -100;
-            X[1] = 0;
-            X[2] = 0;
-            X[3] = 0;
-            X[4] = 0;
-            X[5] = 6;
-            X[6] = 4;
-            X[7] = 5;
-            X[8] = 2;
-            X[9] = 1;
-            var B = matrix * X;
-            var Xnew = method.Run(matrix, B);
-            return X == Xnew;
+            Console.Write("Out matrix: ");
+            matrix.PrintContent();
+            var x = new Vector(10);
+            x[0] = -100;
+            x[1] = 0;
+            x[2] = 0;
+            x[3] = 0;
+            x[4] = 0;
+            x[5] = 6;
+            x[6] = 4;
+            x[7] = 5;
+            x[8] = 2;
+            x[9] = 1;
+            var B = matrix * x;
+            var xNew = method.Run(matrix, B);
+            return VerifyResult(x, xNew);
         }
     }
 }

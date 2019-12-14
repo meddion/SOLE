@@ -71,6 +71,11 @@ namespace Core
             return !(vec1 == vec2);
         }
 
+        public void PrintContent()
+        {
+            Console.WriteLine("[{0}]", string.Join(", ", data));
+        }
+
         public static Vector FromArray(double [,] array)
         {
             int size = array.GetLength(1);
